@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-02-09T14:00:44.058Z",
+  "scrapedAt": "2026-02-09T14:28:14.986Z",
   "itemsSearched": [
     "milk",
     "eggs",
@@ -22,7 +22,7 @@
     "onions",
     "salmon"
   ],
-  "zipCount": 8,
+  "zipCount": 6,
   "pricesByZip": {
     "13045": {
       "neighborhood": "Cortland",
@@ -97,11 +97,18 @@
       "store": "Instacart",
       "items": {
         "milk": {
-          "name": "Wegmans 2% Reduced Fat Milk",
-          "price": 2.79,
+          "name": "Wegmans Vitamin D Whole Milk",
+          "price": 3.49,
           "store": "Instacart",
-          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_5fb5751e-c967-43b1-963a-439b8ad94be3.jpeg",
-          "unit": "0.5 gal"
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_2bd5adcc-32ad-4d8a-9d87-b9a129b28422.jpeg",
+          "unit": "1 gal"
+        },
+        "eggs": {
+          "name": "Wegmans Grade AA Large Eggs, 18 Count",
+          "price": 3.39,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_259a582a-2e36-4a90-88f2-7a078617a401.jpeg",
+          "unit": "18 ct"
         },
         "bread": {
           "name": "Wegmans Giant White Bread",
@@ -109,64 +116,155 @@
           "store": "Instacart",
           "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20324e05-f4d1-462e-8ca0-2391454eec1b.jpeg",
           "unit": "22 oz"
+        },
+        "butter": {
+          "name": "Wegmans Salted Sweet Cream Butter Quarters",
+          "price": 3.79,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20b46cce-ec7b-4567-99bf-556e39aa19d0.jpeg",
+          "unit": "1 lb"
         }
       },
-      "basketTotal": 4.38,
-      "itemCount": 2
+      "basketTotal": 12.26,
+      "itemCount": 4
     },
     "14845": {
       "neighborhood": "Horseheads",
       "lat": 42.167,
       "lng": -76.8205,
       "store": "Instacart",
-      "items": {},
-      "basketTotal": 0,
-      "itemCount": 0
+      "items": {
+        "milk": {
+          "name": "Wegmans Vitamin D Whole Milk",
+          "price": 3.49,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_2bd5adcc-32ad-4d8a-9d87-b9a129b28422.jpeg",
+          "unit": "1 gal"
+        },
+        "bread": {
+          "name": "Wegmans Giant White Bread",
+          "price": 1.59,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20324e05-f4d1-462e-8ca0-2391454eec1b.jpeg",
+          "unit": "22 oz"
+        },
+        "rice": {
+          "name": "Wegmans Long Grain White Rice",
+          "price": 4.09,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_8f491f70-6802-494b-badb-53cb1ee65cae.jpeg",
+          "unit": "5 lb"
+        }
+      },
+      "basketTotal": 9.17,
+      "itemCount": 3
     },
     "14850": {
       "neighborhood": "Ithaca (Downtown)",
       "lat": 42.444,
       "lng": -76.5019,
       "store": "Instacart",
-      "items": {},
-      "basketTotal": 0,
-      "itemCount": 0
-    },
-    "14853": {
-      "neighborhood": "Collegetown",
-      "lat": 42.443,
-      "lng": -76.4856,
-      "store": "Instacart",
-      "items": {},
-      "basketTotal": 0,
-      "itemCount": 0
-    },
-    "14882": {
-      "neighborhood": "Lansing",
-      "lat": 42.5722,
-      "lng": -76.529,
-      "store": "Instacart",
-      "items": {},
-      "basketTotal": 0,
-      "itemCount": 0
+      "items": {
+        "milk": {
+          "name": "Wegmans Vitamin D Whole Milk",
+          "price": 3.49,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_2bd5adcc-32ad-4d8a-9d87-b9a129b28422.jpeg",
+          "unit": "1 gal"
+        },
+        "eggs": {
+          "name": "Wegmans Grade AA Large Eggs, 18 Count",
+          "price": 3.39,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_259a582a-2e36-4a90-88f2-7a078617a401.jpeg",
+          "unit": "18 ct"
+        },
+        "bread": {
+          "name": "Wegmans Giant White Bread",
+          "price": 1.59,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20324e05-f4d1-462e-8ca0-2391454eec1b.jpeg",
+          "unit": "22 oz"
+        },
+        "butter": {
+          "name": "Wegmans Salted Sweet Cream Butter Quarters",
+          "price": 3.79,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20b46cce-ec7b-4567-99bf-556e39aa19d0.jpeg",
+          "unit": "1 lb"
+        },
+        "rice": {
+          "name": "Wegmans Organic White Jasmine Rice",
+          "price": 5.79,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_251dc73e-58a0-4291-845d-a59c2b8cf4a9.jpeg",
+          "unit": "32 oz"
+        }
+      },
+      "basketTotal": 18.05,
+      "itemCount": 5
     },
     "14886": {
       "neighborhood": "Trumansburg",
       "lat": 42.5429,
       "lng": -76.6608,
       "store": "Instacart",
-      "items": {},
-      "basketTotal": 0,
-      "itemCount": 0
+      "items": {
+        "milk": {
+          "name": "Wegmans Vitamin D Whole Milk",
+          "price": 3.49,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_2bd5adcc-32ad-4d8a-9d87-b9a129b28422.jpeg",
+          "unit": "1 gal"
+        },
+        "eggs": {
+          "name": "Wegmans Grade AA Large Eggs, 18 Count",
+          "price": 3.39,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_259a582a-2e36-4a90-88f2-7a078617a401.jpeg",
+          "unit": "18 ct"
+        },
+        "rice": {
+          "name": "Wegmans Long Grain White Rice",
+          "price": 4.09,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_8f491f70-6802-494b-badb-53cb1ee65cae.jpeg",
+          "unit": "5 lb"
+        }
+      },
+      "basketTotal": 10.97,
+      "itemCount": 3
     },
     "14901": {
       "neighborhood": "Elmira",
       "lat": 42.0898,
       "lng": -76.8077,
       "store": "Instacart",
-      "items": {},
-      "basketTotal": 0,
-      "itemCount": 0
+      "items": {
+        "milk": {
+          "name": "Wegmans Vitamin D Whole Milk",
+          "price": 3.49,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_2bd5adcc-32ad-4d8a-9d87-b9a129b28422.jpeg",
+          "unit": "1 gal"
+        },
+        "bread": {
+          "name": "Wegmans Giant White Bread",
+          "price": 1.59,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20324e05-f4d1-462e-8ca0-2391454eec1b.jpeg",
+          "unit": "22 oz"
+        },
+        "butter": {
+          "name": "Wegmans Salted Sweet Cream Butter Quarters",
+          "price": 3.79,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20b46cce-ec7b-4567-99bf-556e39aa19d0.jpeg",
+          "unit": "1 lb"
+        }
+      },
+      "basketTotal": 8.87,
+      "itemCount": 3
     }
   }
 }
