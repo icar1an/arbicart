@@ -60,7 +60,7 @@ async function fetchPricesAllZips(items, homeZip) {
     // Try Apify
     if (!useLive) {
         try {
-            const results = await apify.searchProducts(items, address);
+            const results = await apify.searchProducts(items, homeZip, address);
             if (results && results.length) {
                 useLive = true;
                 console.log('📡 Using Apify scraper');
