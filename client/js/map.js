@@ -1,5 +1,5 @@
 /**
- * map.js — Leaflet map with neo-brutalist emoji pins
+ * map.js — Leaflet map with clean circular price pins
  *
  * Must register: window.Arbicart.map = { plotPrices(pricesByZip), centerOn(lat, lng) }
  */
@@ -9,61 +9,75 @@ window.Arbicart = window.Arbicart || {};
 // ── Initialize Leaflet map (centered on Ithaca) ────────────────────
 const mapInstance = L.map('map-container').setView([42.4440, -76.5019], 11);
 
-// Stamen Toner Lite — high contrast, brutalist-friendly tiles
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> © <a href="https://carto.com/attributions">CARTO</a>',
   subdomains: 'abcd',
   maxZoom: 19,
 }).addTo(mapInstance);
 
-// ── Inject neo-brutalist pin styles ─────────────────────────────────
+// ── Inject clean pin styles ─────────────────────────────────────────
 const style = document.createElement('style');
 style.textContent = `
-  @keyframes pinStamp {
-    0% { transform: scale(1.4); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-  }
   .price-pin {
     background: none !important;
     border: none !important;
   }
+  .pin-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 150ms ease;
+    animation: pinFade 0.25s ease-out;
+    cursor: pointer;
+  }
+  .pin-badge:hover {
+    transform: scale(1.08);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  }
+  .pin-home {
+    background: #0AAD0A;
+    color: #fff;
+  }
+  .pin-cheapest {
+    background: #003D29;
+    color: #fff;
+  }
+  .pin-default {
+    background: #FFFFFF;
+    color: #343538;
+    border: 1px solid #E8E9EB;
+  }
+  @keyframes pinFade {
+    0% { opacity: 0; transform: translateY(-4px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
   .leaflet-popup-content-wrapper {
-    border-radius: 0 !important;
-    border: 4px solid #000 !important;
-    box-shadow: 6px 6px 0px 0px #000 !important;
-    font-family: 'Space Grotesk', sans-serif !important;
+    border-radius: 12px !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12) !important;
+    font-family: 'Inter', -apple-system, sans-serif !important;
   }
   .leaflet-popup-tip {
-    display: none !important;
+    box-shadow: none !important;
   }
 `;
 document.head.appendChild(style);
 
-// ── Custom neo-brutalist pin factory ────────────────────────────────
+// ── Compact circular pin factory ────────────────────────────────────
 function createPricePin(total, isHome, isCheapest) {
-  const emoji = isHome ? '📍' : isCheapest ? '💰' : '🏷️';
-  const bgColor = isHome ? '#FF6B6B' : isCheapest ? '#FFD93D' : '#FFFFFF';
-
+  const cls = isHome ? 'pin-home' : isCheapest ? 'pin-cheapest' : 'pin-default';
   return L.divIcon({
     className: 'price-pin',
-    html: `<div style="
-      background: ${bgColor};
-      color: #000;
-      padding: 6px 12px;
-      border: 4px solid #000;
-      box-shadow: 4px 4px 0px 0px #000;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      text-transform: uppercase;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      animation: pinStamp 0.2s ease-out;
-    ">${emoji} $${total.toFixed(2)}</div>`,
+    html: `<div class="pin-badge ${cls}">$${total.toFixed(0)}</div>`,
     iconSize: [0, 0],
-    iconAnchor: [0, 0],
+    iconAnchor: [25, 12],
   });
 }
 
@@ -94,25 +108,24 @@ window.Arbicart.map = {
         const marker = L.marker([data.lat, data.lng], { icon })
           .addTo(mapInstance)
           .bindPopup(`
-            <div style="text-align:center; padding: 8px; font-family: 'Space Grotesk', sans-serif;">
-              <strong style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">${data.neighborhood}</strong><br>
-              <span style="font-size: 24px;">${isHome ? '🏠' : isCheapest ? '💰' : '🏪'}</span><br>
-              <span style="font-size: 22px; font-weight: 700;">$${data.basketTotal.toFixed(2)}</span><br>
-              <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">
-                Income: $${(data.medianIncome / 1000).toFixed(0)}k
-              </span>
+            <div style="text-align:center; padding: 6px 4px; font-family: 'Inter', sans-serif;">
+              <div style="font-weight: 700; font-size: 13px; color: #343538; margin-bottom: 2px;">${data.neighborhood}</div>
+              <div style="font-size: 22px; font-weight: 800; color: ${isCheapest ? '#003D29' : isHome ? '#0AAD0A' : '#343538'};">$${data.basketTotal.toFixed(2)}</div>
+              <div style="font-size: 11px; color: #72767E; margin-top: 2px;">
+                ${data.store || ''} · ${zip}
+              </div>
             </div>
           `);
         markers.push(marker);
-      }, i * 100);
+      }, i * 80);
     });
 
     setTimeout(() => {
       if (markers.length) {
         const group = L.featureGroup(markers);
-        mapInstance.fitBounds(group.getBounds().pad(0.1));
+        mapInstance.fitBounds(group.getBounds().pad(0.15));
       }
-    }, Object.keys(pricesByZip).length * 100 + 200);
+    }, Object.keys(pricesByZip).length * 80 + 200);
   },
 
   centerOn(lat, lng) {

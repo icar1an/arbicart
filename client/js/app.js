@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // ── Loading state ─────────────────────────────────────────
         const originalText = compareBtn.textContent;
-        compareBtn.textContent = '🔄 Comparing…';
+        compareBtn.textContent = '⏳ Fetching real prices… (1-2 min)';
         compareBtn.disabled = true;
 
         try {
@@ -98,18 +98,15 @@ function showToast(message) {
             left: '50%',
             transform: 'translateX(-50%)',
             padding: '0.75rem 1.5rem',
-            borderRadius: '0',
-            background: '#000',
+            borderRadius: '12px',
+            background: '#003D29',
             color: '#fff',
             fontSize: '0.85rem',
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontWeight: '700',
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-            border: '2px solid #fff',
-            boxShadow: '4px 4px 0px 0px rgba(255,255,255,0.3)',
+            fontFamily: "'Inter', -apple-system, sans-serif",
+            fontWeight: '600',
             zIndex: '9999',
-            transition: 'opacity 0.15s ease-out',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+            transition: 'opacity 0.2s ease',
             pointerEvents: 'none',
         });
         document.body.appendChild(toast);

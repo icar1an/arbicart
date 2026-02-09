@@ -1,5 +1,5 @@
 /**
- * savings.js — Savings calculation + neo-brutalist comparison card
+ * savings.js — Savings card with Instacart-style design
  *
  * Must register: window.Arbicart.savings = { showSavings(homeZip, pricesByZip) }
  */
@@ -31,129 +31,97 @@ window.Arbicart.savings = {
 
     section.innerHTML = `
       <div style="
-        background: #FFD93D;
-        border: 4px solid #000;
-        box-shadow: 12px 12px 0px 0px #000;
-        padding: 2rem;
+        background: #FFFFFF;
+        border: 1px solid #E8E9EB;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        padding: 1.5rem;
         max-width: 600px;
-        margin: 1.5rem auto;
-        font-family: 'Space Grotesk', sans-serif;
-        animation: stampIn 0.2s ease-out;
-        position: relative;
+        margin: 0 auto;
+        font-family: 'Inter', -apple-system, sans-serif;
+        animation: fadeIn 0.3s ease-out;
       ">
-        <!-- Rotated badge -->
-        <div style="
-          position: absolute;
-          top: -14px;
-          right: 16px;
-          background: #FF6B6B;
-          border: 4px solid #000;
-          box-shadow: 4px 4px 0px 0px #000;
-          padding: 0.3rem 0.8rem;
-          font-size: 0.7rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.2em;
-          transform: rotate(2deg);
-        ">💸 SAVINGS</div>
+        <!-- Header -->
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+          <span style="
+            background: #E8F5E9;
+            color: #0AAD0A;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 100px;
+            letter-spacing: 0.05em;
+          ">💰 SAVINGS</span>
+        </div>
 
-        <h2 style="
-          font-size: 1.2rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          margin-bottom: 1rem;
-          text-align: center;
-        ">SAME GROCERIES · DIFFERENT NEIGHBORHOOD</h2>
+        <h3 style="font-size: 1.1rem; font-weight: 700; color: #343538; margin-bottom: 1rem;">
+          Same groceries, different neighborhood
+        </h3>
 
-        <!-- Price comparison boxes -->
-        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+        <!-- Price comparison -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
           <!-- Home ZIP -->
           <div style="
-            background: #FFFFFF;
-            border: 4px solid #000;
-            box-shadow: 4px 4px 0px 0px #000;
-            padding: 1rem 1.5rem;
-            min-width: 140px;
+            flex: 1;
+            min-width: 120px;
+            background: #F6F7F8;
+            border-radius: 12px;
+            padding: 1rem;
             text-align: center;
           ">
-            <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.25rem;">
-              🏠 ${homeData.neighborhood}
+            <div style="font-size: 0.7rem; font-weight: 600; color: #72767E; margin-bottom: 0.25rem;">
+              📍 ${homeData.neighborhood}
             </div>
-            <div style="font-size: 1.8rem; font-weight: 700;">
+            <div style="font-size: 1.6rem; font-weight: 800; color: #343538;">
               $${homeData.basketTotal.toFixed(2)}
             </div>
           </div>
 
           <!-- Arrow -->
-          <div style="display: flex; align-items: center; font-size: 1.5rem; font-weight: 700;">→</div>
+          <div style="font-size: 1.2rem; color: #72767E;">→</div>
 
           <!-- Cheapest ZIP -->
           <div style="
-            background: #C4B5FD;
-            border: 4px solid #000;
-            box-shadow: 4px 4px 0px 0px #000;
-            padding: 1rem 1.5rem;
-            min-width: 140px;
+            flex: 1;
+            min-width: 120px;
+            background: #E8F5E9;
+            border-radius: 12px;
+            padding: 1rem;
             text-align: center;
           ">
-            <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.25rem;">
+            <div style="font-size: 0.7rem; font-weight: 600; color: #0AAD0A; margin-bottom: 0.25rem;">
               💰 ${cheapestData.neighborhood}
             </div>
-            <div style="font-size: 1.8rem; font-weight: 700;">
+            <div style="font-size: 1.6rem; font-weight: 800; color: #003D29;">
               $${cheapestTotal.toFixed(2)}
             </div>
           </div>
         </div>
 
-        <!-- Big savings number -->
+        <!-- Big savings -->
         <div style="
-          background: #FFFFFF;
-          border: 4px solid #000;
-          box-shadow: 6px 6px 0px 0px #000;
+          background: linear-gradient(135deg, #003D29, #0AAD0A);
+          border-radius: 12px;
           padding: 1.25rem;
           text-align: center;
+          color: #FFFFFF;
         ">
-          <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.25rem;">
+          <div style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; opacity: 0.8; margin-bottom: 0.25rem;">
             YOU'D SAVE
           </div>
-          <div class="savings-amount" style="
-            font-size: 3rem;
-            font-weight: 700;
-            -webkit-text-stroke: 2px #000;
-            color: #FF6B6B;
-            animation: savingsPop 0.3s ease-out;
-          ">
-            $${monthlySavings.toFixed(2)}<span style="font-size: 1rem; -webkit-text-stroke: 0; color: #000;">/MO</span>
+          <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.15rem;">
+            $${monthlySavings.toFixed(2)}<span style="font-size: 0.9rem; opacity: 0.7;">/mo</span>
           </div>
-          <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem;">
-            ${pctSavings}% LESS PER TRIP · ~4 TRIPS/MONTH
+          <div style="font-size: 0.75rem; font-weight: 500; opacity: 0.7;">
+            ${pctSavings}% less per trip · ~4 trips/month
           </div>
         </div>
 
-        <p style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; text-align: center; margin-top: 1rem;">
-          🛒 PRICES FROM INSTACART · FOR AWARENESS NOT ARBITRAGE
+        <p style="font-size: 0.7rem; color: #72767E; text-align: center; margin-top: 0.75rem;">
+          Prices from Instacart · For awareness, not arbitrage
         </p>
       </div>
     `;
-
-    // Inject keyframes (once)
-    if (!document.getElementById('savings-animations')) {
-      const style = document.createElement('style');
-      style.id = 'savings-animations';
-      style.textContent = `
-        @keyframes stampIn {
-          0% { opacity: 0; transform: scale(1.3); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-        @keyframes savingsPop {
-          0% { transform: scale(0.5); opacity: 0; }
-          70% { transform: scale(1.08); }
-          100% { transform: scale(1); opacity: 1; }
-        }
-      `;
-      document.head.appendChild(style);
-    }
 
     section.scrollIntoView({ behavior: 'smooth', block: 'center' });
   },

@@ -1,8 +1,7 @@
 /**
- * basket.js — Basket builder UI
+ * basket.js — Basket builder with receipt-format display
  *
- * Registers: window.Arbicart.basket = { getItems() → [{name, qty}] }
- * Handles preset buttons, custom item add, and pill rendering.
+ * Must register: window.Arbicart.basket = { getItems() → [{name, qty}] }
  */
 
 window.Arbicart = window.Arbicart || {};
@@ -16,25 +15,47 @@ const PRESETS = {
 
 let items = [];
 
-function renderPills() {
+/**
+ * Render items as a receipt-style list
+ */
+function renderReceipt() {
     const container = document.getElementById('basket-items');
     if (!container) return;
 
-    container.innerHTML = items
-        .map(
-            (item, i) =>
-                `<span class="basket-pill">
-          ${item.name}
-          <span class="remove-x" data-index="${i}">✕</span>
-        </span>`,
-        )
-        .join('');
+    if (items.length === 0) {
+        container.innerHTML = '';
+        return;
+    }
+
+    container.innerHTML = `
+    <div class="receipt-card">
+      <div class="receipt-header">
+        <span>🧾 Your basket</span>
+        <span>${items.length} item${items.length !== 1 ? 's' : ''}</span>
+      </div>
+      <ul class="receipt-items">
+        ${items
+            .map(
+                (item, i) => `
+          <li class="receipt-item">
+            <span class="receipt-item-name">${item.name}</span>
+            <button class="receipt-item-remove" data-index="${i}" aria-label="Remove ${item.name}">✕</button>
+          </li>`,
+            )
+            .join('')}
+      </ul>
+      <div class="receipt-footer">
+        <span>Ready to compare</span>
+        <span>📍 Enter ZIP below</span>
+      </div>
+    </div>
+  `;
 
     // Attach remove handlers
-    container.querySelectorAll('.remove-x').forEach((el) => {
+    container.querySelectorAll('.receipt-item-remove').forEach((el) => {
         el.addEventListener('click', () => {
             items.splice(parseInt(el.dataset.index), 1);
-            renderPills();
+            renderReceipt();
         });
     });
 }
@@ -42,18 +63,17 @@ function renderPills() {
 function addItem(name) {
     const cleaned = name.trim().toLowerCase();
     if (!cleaned) return;
-    if (items.some((i) => i.name === cleaned)) return; // no dupes
+    if (items.some((i) => i.name === cleaned)) return;
     items.push({ name: cleaned, qty: 1 });
-    renderPills();
+    renderReceipt();
 }
 
 function setPreset(presetKey) {
     const preset = PRESETS[presetKey];
     if (!preset) return;
     items = preset.map((name) => ({ name, qty: 1 }));
-    renderPills();
+    renderReceipt();
 
-    // Update active state on buttons
     document.querySelectorAll('.preset-btn').forEach((btn) => {
         btn.classList.toggle('active', btn.dataset.preset === presetKey);
     });
