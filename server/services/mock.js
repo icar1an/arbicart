@@ -1,12 +1,11 @@
 /**
- * server/services/mock.js — Realistic NYC mock data for development
- * Agent/backend owns this file.
+ * server/services/mock.js — Realistic Ithaca-area mock data for development
  *
  * Used when neither INSTACART_API_KEY nor APIFY_API_TOKEN is available.
- * Prices vary by ZIP code — lower-income neighborhoods are 10-25% cheaper.
+ * Prices vary by ZIP code — lower-income areas tend to be cheaper.
  */
 
-// ── Base prices (Midtown baseline) ────────────────────────────
+// ── Base prices (Collegetown baseline) ────────────────────────
 const BASE_PRICES = {
     'milk': 4.79,
     'eggs': 5.99,
@@ -33,112 +32,112 @@ const BASE_PRICES = {
     'lettuce': 2.99,
     'frozen pizza': 6.99,
     'ice cream': 5.99,
+    'ramen': 0.99,
+    'avocado': 2.49,
+    'spinach': 3.49,
+    'salmon': 12.99,
+    'quinoa': 5.99,
+    'blueberries': 4.99,
 };
 
-// ── Store names per neighborhood ──────────────────────────────
+// ── Store names per area ──────────────────────────────────────
 const STORES = {
-    '10001': 'Morton Williams',
-    '10002': 'Essex Market',
-    '10003': 'Trader Joe\'s',
-    '10010': 'Whole Foods',
-    '10019': 'Westside Market',
-    '10025': 'Fairway Market',
-    '10029': 'Associated',
-    '10034': 'Key Food',
-    '10451': 'Fine Fare',
-    '10301': 'ShopRite',
+    '14850': 'Wegmans Ithaca',
+    '14853': 'Collegetown Market',
+    '14882': 'Tops Lansing',
+    '14886': 'Trumansburg Grocery',
+    '14867': 'P&C Fresh Newfield',
+    '14817': 'Brooktondale Market',
+    '14830': 'Tops Corning',
+    '14845': 'Horseheads Wegmans',
+    '14901': 'Tops Elmira',
+    '13045': 'Tops Cortland',
 };
 
 // ── ZIP code data ─────────────────────────────────────────────
 // priceMult: multiplier relative to base prices
-// Lower-income areas have lower multipliers (cheaper groceries)
 const ZIPS = {
-    '10001': {
-        neighborhood: 'Midtown',
-        lat: 40.7484,
-        lng: -73.9967,
-        medianIncome: 85000,
+    '14850': {
+        neighborhood: 'Ithaca (Downtown)',
+        lat: 42.4440,
+        lng: -76.5019,
+        medianIncome: 32000,
         priceMult: 1.0,
     },
-    '10002': {
-        neighborhood: 'Lower East Side',
-        lat: 40.7157,
-        lng: -73.9863,
-        medianIncome: 42000,
+    '14853': {
+        neighborhood: 'Collegetown / Cornell',
+        lat: 42.4430,
+        lng: -76.4856,
+        medianIncome: 28000,
+        priceMult: 1.05,
+    },
+    '14882': {
+        neighborhood: 'Lansing',
+        lat: 42.5722,
+        lng: -76.5290,
+        medianIncome: 62000,
+        priceMult: 0.88,
+    },
+    '14886': {
+        neighborhood: 'Trumansburg',
+        lat: 42.5429,
+        lng: -76.6608,
+        medianIncome: 48000,
         priceMult: 0.82,
     },
-    '10003': {
-        neighborhood: 'East Village',
-        lat: 40.7317,
-        lng: -73.9893,
-        medianIncome: 78000,
-        priceMult: 0.95,
+    '14867': {
+        neighborhood: 'Newfield',
+        lat: 42.3579,
+        lng: -76.5933,
+        medianIncome: 52000,
+        priceMult: 0.85,
     },
-    '10010': {
-        neighborhood: 'Gramercy',
-        lat: 40.7390,
-        lng: -73.9826,
-        medianIncome: 105000,
-        priceMult: 1.08,
+    '14817': {
+        neighborhood: 'Brooktondale',
+        lat: 42.3880,
+        lng: -76.3960,
+        medianIncome: 44000,
+        priceMult: 0.80,
     },
-    '10019': {
-        neighborhood: 'Hell\'s Kitchen',
-        lat: 40.7654,
-        lng: -74.0001,
-        medianIncome: 72000,
-        priceMult: 0.93,
-    },
-    '10025': {
-        neighborhood: 'Upper West Side',
-        lat: 40.7990,
-        lng: -73.9680,
-        medianIncome: 95000,
-        priceMult: 1.04,
-    },
-    '10029': {
-        neighborhood: 'East Harlem',
-        lat: 40.7918,
-        lng: -73.9440,
-        medianIncome: 32000,
-        priceMult: 0.76,
-    },
-    '10034': {
-        neighborhood: 'Inwood',
-        lat: 40.8677,
-        lng: -73.9212,
+    '14830': {
+        neighborhood: 'Corning',
+        lat: 42.1428,
+        lng: -77.0547,
         medianIncome: 38000,
         priceMult: 0.78,
     },
-    '10451': {
-        neighborhood: 'South Bronx',
-        lat: 40.8200,
-        lng: -73.9237,
-        medianIncome: 25000,
+    '14845': {
+        neighborhood: 'Horseheads',
+        lat: 42.1670,
+        lng: -76.8205,
+        medianIncome: 55000,
+        priceMult: 0.83,
+    },
+    '14901': {
+        neighborhood: 'Elmira',
+        lat: 42.0898,
+        lng: -76.8077,
+        medianIncome: 30000,
         priceMult: 0.75,
     },
-    '10301': {
-        neighborhood: 'Staten Island',
-        lat: 40.6433,
-        lng: -74.0770,
-        medianIncome: 55000,
-        priceMult: 0.88,
+    '13045': {
+        neighborhood: 'Cortland',
+        lat: 42.6012,
+        lng: -76.1805,
+        medianIncome: 35000,
+        priceMult: 0.77,
     },
 };
 
 // ── Tiny deterministic jitter so prices feel real ─────────────
 function jitter(base, seed) {
-    // simple hash-like jitter ±5%
     const hash = (seed.charCodeAt(0) * 31 + seed.charCodeAt(seed.length - 1)) % 100;
-    const factor = 0.95 + (hash / 100) * 0.10; // 0.95 – 1.05
+    const factor = 0.95 + (hash / 100) * 0.10; // ±5%
     return Math.round(base * factor * 100) / 100;
 }
 
 /**
  * Return mock price data for a specific ZIP code and list of items.
- *
- * @param {string[]} items - Item names to price
- * @param {string}   zip   - 5-digit ZIP code
- * @returns {{ neighborhood, lat, lng, medianIncome, items: Object, basketTotal: number }}
  */
 function getPricesForZip(items, zip) {
     const zipData = ZIPS[zip];
@@ -149,7 +148,7 @@ function getPricesForZip(items, zip) {
 
     for (const item of items) {
         const key = item.toLowerCase().trim();
-        const basePrice = BASE_PRICES[key] || 3.99; // default for unknown items
+        const basePrice = BASE_PRICES[key] || 3.99;
         const price = jitter(basePrice * zipData.priceMult, key + zip);
         priced[item] = {
             price,
@@ -168,9 +167,6 @@ function getPricesForZip(items, zip) {
     };
 }
 
-/**
- * Get all available ZIP codes.
- */
 function getAllZips() {
     return Object.keys(ZIPS);
 }

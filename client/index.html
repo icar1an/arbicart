@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Arbicart — See how much you'd save on groceries in a different neighborhood. Real Instacart prices on a whimsical map.">
-  <title>🛒 Arbicart</title>
+  <meta name="description"
+    content="Arbicart — See how much you'd save on groceries in a different neighborhood. Real Instacart prices, raw data.">
+  <title>🛒 ARBICART</title>
 
-  <!-- Fonts -->
+  <!-- Fonts (Space Grotesk loaded via CSS @import, Inter as fallback via preconnect) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -16,33 +18,70 @@
   <!-- App CSS -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-  <!-- ===== HEADER (agent/ui owns) ===== -->
+  <!-- ===== HEADER ===== -->
   <header id="app-header">
-    <!-- agent/ui builds this -->
+    <div class="header-badge">ITHACA BETA</div>
+    <div class="header-inner">
+      <h1 class="logo">🛒 ARBICART</h1>
+      <p class="tagline">same groceries · different price tags</p>
+    </div>
   </header>
 
-  <!-- ===== BASKET SECTION (agent/ui owns) ===== -->
+  <!-- ===== BASKET SECTION ===== -->
   <section id="basket-section">
-    <!-- agent/ui builds this -->
-  </section>
+    <div class="basket-card">
+      <h2 class="section-title">🧺 BUILD YOUR BASKET</h2>
+      <p class="section-subtitle">Pick a preset or add your own</p>
 
-  <!-- ===== MAP SECTION (agent/map owns) ===== -->
-  <section id="map-section">
-    <div id="map-container">
-      <!-- agent/map initializes Leaflet here -->
+      <!-- Preset buttons -->
+      <div class="preset-row" id="preset-row">
+        <button class="preset-btn" data-preset="college">🍜 COLLEGE STUDENT</button>
+        <button class="preset-btn" data-preset="family">🏠 FAMILY OF 4</button>
+        <button class="preset-btn" data-preset="health">🥗 HEALTH NUT</button>
+        <button class="preset-btn" data-preset="basics">🥖 JUST THE BASICS</button>
+      </div>
+
+      <!-- Custom add -->
+      <div class="add-row">
+        <input type="text" id="item-input" class="item-input" placeholder="add an item… (e.g. avocado)"
+          autocomplete="off" />
+        <button id="add-item-btn" class="add-btn">+ ADD</button>
+      </div>
+
+      <!-- Basket pills -->
+      <div id="basket-items" class="basket-items">
+        <!-- filled by basket.js -->
+      </div>
+
+      <!-- ZIP + Compare -->
+      <div class="compare-row">
+        <div class="zip-group">
+          <label for="zip-input" class="zip-label">📍 YOUR ZIP</label>
+          <input type="text" id="zip-input" class="zip-input" value="14850" maxlength="5" placeholder="14850" />
+        </div>
+        <button id="compare-btn" class="compare-btn">🔍 COMPARE PRICES</button>
+      </div>
     </div>
   </section>
 
-  <!-- ===== SAVINGS SECTION (agent/map owns) ===== -->
+  <!-- ===== MAP SECTION ===== -->
+  <section id="map-section">
+    <div id="map-container">
+      <!-- Leaflet map initializes here -->
+    </div>
+  </section>
+
+  <!-- ===== SAVINGS SECTION ===== -->
   <section id="savings-section">
-    <!-- agent/map builds the savings card here -->
+    <!-- savings card rendered here by savings.js -->
   </section>
 
   <!-- ===== FOOTER ===== -->
   <footer id="app-footer">
-    <p>🛒 Arbicart — awareness, not arbitrage</p>
+    <p>🛒 ARBICART — AWARENESS NOT ARBITRAGE</p>
   </footer>
 
   <!-- Leaflet JS -->
@@ -55,4 +94,5 @@
   <script src="js/app.js"></script>
 
 </body>
+
 </html>

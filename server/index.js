@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'client')));
 
 // API routes
-app.use('/api', pricesRouter);
+app.use('/api/prices', pricesRouter);
 
 // SPA fallback — serve index.html for any non-API route
 app.get('*', (_req, res) => {

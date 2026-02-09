@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     compareBtn.addEventListener('click', async () => {
         // ── Gather basket items ───────────────────────────────────
         const items = window.Arbicart.basket?.getItems?.() || [];
-        const zip = zipInput?.value?.trim() || '10001';
+        const zip = zipInput?.value?.trim() || '14850';
 
         if (items.length === 0) {
             showToast('🛒 Add some items to your basket first!');
@@ -98,13 +98,18 @@ function showToast(message) {
             left: '50%',
             transform: 'translateX(-50%)',
             padding: '0.75rem 1.5rem',
-            borderRadius: '12px',
-            background: 'rgba(0,0,0,0.85)',
+            borderRadius: '0',
+            background: '#000',
             color: '#fff',
-            fontSize: '0.95rem',
-            fontFamily: "'Inter', sans-serif",
+            fontSize: '0.85rem',
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: '700',
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+            border: '2px solid #fff',
+            boxShadow: '4px 4px 0px 0px rgba(255,255,255,0.3)',
             zIndex: '9999',
-            transition: 'opacity 0.3s ease',
+            transition: 'opacity 0.15s ease-out',
             pointerEvents: 'none',
         });
         document.body.appendChild(toast);
