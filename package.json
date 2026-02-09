@@ -1,0 +1,19 @@
+{
+  "name": "arbicart",
+  "version": "0.1.0",
+  "description": "🛒 See how much you'd save on groceries in a different neighborhood",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "keywords": ["grocery", "instacart", "price-comparison", "arbitrage"],
+  "author": "icar1an",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2"
+  }
+}

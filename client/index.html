@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arbicart — See how much you'd save on groceries in a different neighborhood. Real Instacart prices on a whimsical map.">
+  <title>🛒 Arbicart</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ===== HEADER (agent/ui owns) ===== -->
+  <header id="app-header">
+    <!-- agent/ui builds this -->
+  </header>
+
+  <!-- ===== BASKET SECTION (agent/ui owns) ===== -->
+  <section id="basket-section">
+    <!-- agent/ui builds this -->
+  </section>
+
+  <!-- ===== MAP SECTION (agent/map owns) ===== -->
+  <section id="map-section">
+    <div id="map-container">
+      <!-- agent/map initializes Leaflet here -->
+    </div>
+  </section>
+
+  <!-- ===== SAVINGS SECTION (agent/map owns) ===== -->
+  <section id="savings-section">
+    <!-- agent/map builds the savings card here -->
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="app-footer">
+    <p>🛒 Arbicart — awareness, not arbitrage</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- App JS (order matters) -->
+  <script src="js/basket.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/savings.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
