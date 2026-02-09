@@ -1,5 +1,5 @@
 /**
- * savings.js — Savings card with Instacart-style design
+ * savings.js — Savings card with Neo-brutalist Instacart design
  *
  * Must register: window.Arbicart.savings = { showSavings(homeZip, pricesByZip) }
  */
@@ -32,67 +32,101 @@ window.Arbicart.savings = {
     section.innerHTML = `
       <div style="
         background: #FFFFFF;
-        border: 1px solid #E8E9EB;
-        border-radius: 16px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding: 1.5rem;
-        max-width: 600px;
-        margin: 0 auto;
-        font-family: 'Inter', -apple-system, sans-serif;
-        animation: fadeIn 0.3s ease-out;
+        border: 4px solid #000;
+        box-shadow: 8px 8px 0px 0px #000;
+        padding: 1.75rem;
+        height: 100%;
+        font-family: 'Space Grotesk', -apple-system, sans-serif;
+        animation: fadeIn 0.2s ease-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       ">
-        <!-- Header -->
-        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <!-- Header badge -->
+        <div style="margin-bottom: 1.25rem;">
           <span style="
-            background: #E8F5E9;
-            color: #0AAD0A;
+            display: inline-block;
+            background: #0AAD0A;
+            color: #fff;
             font-size: 0.7rem;
             font-weight: 700;
-            padding: 0.25rem 0.6rem;
-            border-radius: 100px;
-            letter-spacing: 0.05em;
+            padding: 0.35rem 0.75rem;
+            border: 3px solid #000;
+            box-shadow: 3px 3px 0px 0px #000;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transform: rotate(-2deg);
           ">💰 SAVINGS</span>
         </div>
 
-        <h3 style="font-size: 1.1rem; font-weight: 700; color: #343538; margin-bottom: 1rem;">
+        <h3 style="
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #000;
+          margin-bottom: 1.25rem;
+          text-transform: uppercase;
+          letter-spacing: -0.01em;
+        ">
           Same groceries, different neighborhood
         </h3>
 
         <!-- Price comparison -->
-        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+        <div style="display: flex; align-items: stretch; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
           <!-- Home ZIP -->
           <div style="
             flex: 1;
             min-width: 120px;
             background: #F6F7F8;
-            border-radius: 12px;
+            border: 4px solid #000;
+            box-shadow: 4px 4px 0px 0px #000;
             padding: 1rem;
             text-align: center;
           ">
-            <div style="font-size: 0.7rem; font-weight: 600; color: #72767E; margin-bottom: 0.25rem;">
+            <div style="
+              font-size: 0.7rem;
+              font-weight: 700;
+              color: #000;
+              margin-bottom: 0.35rem;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
+            ">
               📍 ${homeData.neighborhood}
             </div>
-            <div style="font-size: 1.6rem; font-weight: 800; color: #343538;">
+            <div style="font-size: 1.8rem; font-weight: 700; color: #000;">
               $${homeData.basketTotal.toFixed(2)}
             </div>
           </div>
 
           <!-- Arrow -->
-          <div style="font-size: 1.2rem; color: #72767E;">→</div>
+          <div style="
+            font-size: 1.8rem;
+            color: #000;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+          ">→</div>
 
           <!-- Cheapest ZIP -->
           <div style="
             flex: 1;
             min-width: 120px;
             background: #E8F5E9;
-            border-radius: 12px;
+            border: 4px solid #000;
+            box-shadow: 4px 4px 0px 0px #000;
             padding: 1rem;
             text-align: center;
           ">
-            <div style="font-size: 0.7rem; font-weight: 600; color: #0AAD0A; margin-bottom: 0.25rem;">
+            <div style="
+              font-size: 0.7rem;
+              font-weight: 700;
+              color: #003D29;
+              margin-bottom: 0.35rem;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
+            ">
               💰 ${cheapestData.neighborhood}
             </div>
-            <div style="font-size: 1.6rem; font-weight: 800; color: #003D29;">
+            <div style="font-size: 1.8rem; font-weight: 700; color: #003D29;">
               $${cheapestTotal.toFixed(2)}
             </div>
           </div>
@@ -100,29 +134,52 @@ window.Arbicart.savings = {
 
         <!-- Big savings -->
         <div style="
-          background: linear-gradient(135deg, #003D29, #0AAD0A);
-          border-radius: 12px;
-          padding: 1.25rem;
+          background: #003D29;
+          border: 4px solid #000;
+          box-shadow: 6px 6px 0px 0px #000;
+          padding: 1.5rem;
           text-align: center;
           color: #FFFFFF;
+          position: relative;
+          overflow: hidden;
         ">
-          <div style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; opacity: 0.8; margin-bottom: 0.25rem;">
+          <div style="
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 0.35rem;
+          ">
             YOU'D SAVE
           </div>
-          <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.15rem;">
-            $${monthlySavings.toFixed(2)}<span style="font-size: 0.9rem; opacity: 0.7;">/mo</span>
+          <div style="font-size: 2.8rem; font-weight: 700; margin-bottom: 0.2rem;">
+            $${monthlySavings.toFixed(2)}<span style="font-size: 0.9rem; opacity: 0.7;">/MO</span>
           </div>
-          <div style="font-size: 0.75rem; font-weight: 500; opacity: 0.7;">
+          <div style="
+            font-size: 0.8rem;
+            font-weight: 700;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+          ">
             ${pctSavings}% less per trip · ~4 trips/month
           </div>
         </div>
 
-        <p style="font-size: 0.7rem; color: #72767E; text-align: center; margin-top: 0.75rem;">
+        <p style="
+          font-size: 0.7rem;
+          color: #000;
+          text-align: center;
+          margin-top: 1rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        ">
           Prices from Instacart · For awareness, not arbitrage
         </p>
       </div>
     `;
 
-    section.scrollIntoView({ behavior: 'smooth', block: 'center' });
   },
 };

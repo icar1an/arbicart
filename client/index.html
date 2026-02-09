@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Arbicart — See how much you'd save on groceries in a different neighborhood. Real Instacart prices.">
-  <title>Arbicart — Grocery Price Comparison</title>
+  <title>ARBICART — geoarb your groceries (hypothetically)</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,101 +25,100 @@
   <header id="app-header">
     <div class="header-inner">
       <h1 class="logo"><span class="logo-icon">🥕</span> arbicart</h1>
-      <p class="tagline">Same groceries, different price tags</p>
-      <span class="header-badge">Ithaca Beta</span>
+      <p class="tagline">geoarb your groceries (hypothetically)</p>
+      <span class="header-badge">Cornell Beta</span>
     </div>
   </header>
 
   <!-- ===== SCROLLING BANNER ===== -->
   <div class="scroll-banner">
     <div class="scroll-banner-track">
-      <span class="scroll-banner-item">📍 Comparing prices across 10 Ithaca-area ZIP codes</span>
+      <span class="scroll-banner-item">📍 Comparing prices across 6 neighborhoods in Ithaca</span>
       <span class="scroll-banner-dot"></span>
-      <span class="scroll-banner-item">🏪 Wegmans · Tops · ALDI · GreenStar · P&C Fresh</span>
+      <span class="scroll-banner-item">🏪 Wegmans · ALDI · Tops · Local stores</span>
       <span class="scroll-banner-dot"></span>
-      <span class="scroll-banner-item">💡 Same basket, different neighborhood = real savings</span>
+      <span class="scroll-banner-item">💡 Same basket, different neighborhood</span>
       <span class="scroll-banner-dot"></span>
       <span class="scroll-banner-item">🛒 Powered by Instacart pricing data</span>
       <span class="scroll-banner-dot"></span>
-      <span class="scroll-banner-item">💰 Save up to 25% by shopping one town over</span>
+      <span class="scroll-banner-item">💰 Save money by shopping one town over</span>
       <span class="scroll-banner-dot"></span>
       <!-- Duplicate for seamless loop -->
-      <span class="scroll-banner-item">📍 Comparing prices across 10 Ithaca-area ZIP codes</span>
+      <span class="scroll-banner-item">📍 Comparing prices across 6 neighborhoods in Ithaca</span>
       <span class="scroll-banner-dot"></span>
-      <span class="scroll-banner-item">🏪 Wegmans · Tops · ALDI · GreenStar · P&C Fresh</span>
+      <span class="scroll-banner-item">🏪 Wegmans · ALDI · Tops · Local stores</span>
       <span class="scroll-banner-dot"></span>
-      <span class="scroll-banner-item">💡 Same basket, different neighborhood = real savings</span>
+      <span class="scroll-banner-item">💡 Same basket, different neighborhood</span>
       <span class="scroll-banner-dot"></span>
       <span class="scroll-banner-item">🛒 Powered by Instacart pricing data</span>
       <span class="scroll-banner-dot"></span>
-      <span class="scroll-banner-item">💰 Save up to 25% by shopping one town over</span>
+      <span class="scroll-banner-item">💰 Save money by shopping one town over</span>
       <span class="scroll-banner-dot"></span>
     </div>
   </div>
 
-  <!-- ===== BASKET SECTION ===== -->
-  <section id="basket-section">
-    <div class="basket-card">
-      <h2 class="section-title">Build your basket</h2>
-      <p class="section-subtitle">Pick a preset or add your own items</p>
+  <!-- ===== DASHBOARD GRID ===== -->
+  <div class="dashboard-grid">
 
-      <!-- Preset buttons -->
-      <div class="preset-row" id="preset-row">
-        <button class="preset-btn" data-preset="college">🍜 College Student</button>
-        <button class="preset-btn" data-preset="family">🏠 Family of 4</button>
-        <button class="preset-btn" data-preset="health">🥗 Health Nut</button>
-        <button class="preset-btn" data-preset="basics">🥖 Just the Basics</button>
-      </div>
+    <!-- TOP-LEFT: Overview / ZIP selector -->
+    <section id="overview-section">
+      <div class="overview-card">
+        <h2 class="section-title">Grocery prices near you</h2>
+        <p class="section-subtitle">5-item basket from your local store</p>
 
-      <!-- Custom add -->
-      <div class="add-row">
-        <input type="text" id="item-input" class="item-input" placeholder="Add an item… (e.g. avocado)"
-          autocomplete="off" />
-        <button id="add-item-btn" class="add-btn">+ Add</button>
-      </div>
-
-      <!-- Receipt-style basket -->
-      <div id="basket-items">
-        <!-- filled by basket.js as receipt -->
-      </div>
-
-      <!-- ZIP + Compare -->
-      <div class="compare-row">
-        <div class="zip-group">
-          <label for="zip-input" class="zip-label">Your ZIP</label>
-          <input type="text" id="zip-input" class="zip-input" value="14850" maxlength="5" placeholder="14850" />
+        <!-- Receipt display -->
+        <div id="receipt-container">
+          <!-- filled by app.js -->
         </div>
-        <button id="compare-btn" class="compare-btn">Compare Prices</button>
+
+        <!-- ZIP selector -->
+        <div class="zip-selector-row">
+          <div class="zip-group">
+            <label for="zip-input" class="zip-label">Your ZIP</label>
+            <select id="zip-input" class="zip-select">
+              <!-- filled by app.js from price data -->
+            </select>
+          </div>
+          <button id="compare-btn" class="compare-btn">📍 Show on Map</button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== MAP SECTION ===== -->
-  <section id="map-section">
-    <p class="map-label">📍 Prices by neighborhood</p>
-    <div id="map-container">
-      <!-- Leaflet map initializes here -->
-    </div>
-  </section>
+    <!-- TOP-RIGHT: Map -->
+    <section id="map-section">
+      <p class="map-label">📍 Prices by neighborhood</p>
+      <div id="map-container">
+        <!-- Leaflet map initializes here -->
+      </div>
+    </section>
 
-  <!-- ===== SAVINGS SECTION ===== -->
-  <section id="savings-section">
-    <!-- savings card rendered here by savings.js -->
-  </section>
+    <!-- BOTTOM-LEFT: Price table -->
+    <section id="price-table-section">
+      <div id="price-table-container">
+        <!-- filled by app.js -->
+      </div>
+    </section>
+
+    <!-- BOTTOM-RIGHT: Savings -->
+    <section id="savings-section">
+      <!-- savings card rendered here by savings.js -->
+    </section>
+
+  </div>
 
   <!-- ===== FOOTER ===== -->
   <footer id="app-footer">
-    <p><strong>arbicart</strong> — for awareness, not arbitrage</p>
+    <p><strong>arbicart</strong> — geoarb your groceries (hypothetically)</p>
   </footer>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- App JS (order matters) -->
-  <script src="js/basket.js"></script>
   <script src="js/map.js"></script>
   <script src="js/savings.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/interactions.js"></script>
 
 </body>
 

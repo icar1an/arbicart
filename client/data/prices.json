@@ -1,0 +1,279 @@
+{
+  "homeZip": "14850",
+  "items": [
+    "milk",
+    "eggs",
+    "bread",
+    "butter",
+    "rice"
+  ],
+  "source": "pre-scraped",
+  "scrapedAt": "2026-02-09T15:44:20.924Z",
+  "zipsReturned": 6,
+  "pricesByZip": {
+    "13045": {
+      "neighborhood": "Cortland",
+      "lat": 42.6012,
+      "lng": -76.1805,
+      "store": "ALDI",
+      "items": {
+        "milk": {
+          "name": "Friendly Farms Whole Milk",
+          "price": 2.05,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3e06b4ed-686e-4cd2-a478-3245ce04647d.jpg",
+          "unit": "0.5 gal"
+        },
+        "eggs": {
+          "name": "Goldhen Grade A Large Eggs",
+          "price": 2.19,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_af44d7d5-3404-42cf-a574-c1d221815260.jpg",
+          "unit": "12 ct"
+        },
+        "bread": {
+          "name": "L'oven Fresh White Bread",
+          "price": 1.55,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_963f05e3-9eac-4d87-b2bd-05127163b7f0.jpg",
+          "unit": "20 oz"
+        },
+        "butter": {
+          "name": "Countryside Creamery Salted Butter Quarters",
+          "price": 3.65,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3d4ff341-9fff-4831-884b-e5e9e73acece.jpg",
+          "unit": "16 oz"
+        },
+        "rice": {
+          "name": "Earthly Grains Long Grain White Ready to Serve Rice",
+          "price": 1.45,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_e4d5cce8-09e1-494d-9941-99311f91e8bd.jpg",
+          "unit": "8.8 oz"
+        }
+      },
+      "basketTotal": 10.89
+    },
+    "13202": {
+      "neighborhood": "Syracuse (Downtown)",
+      "lat": 42.6526,
+      "lng": -76.1474,
+      "store": "ALDI",
+      "items": {
+        "milk": {
+          "name": "Kroger® Vitamin D Whole Milk 16 fl. oz. Bottle",
+          "price": 1.59,
+          "store": "Local Store",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_7ce2bb5e-f69b-44f8-a646-30754c3a78a1.jpeg",
+          "unit": "1 pt"
+        },
+        "eggs": {
+          "name": "Goldhen Grade A Large Eggs",
+          "price": 2.19,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_af44d7d5-3404-42cf-a574-c1d221815260.jpg",
+          "unit": "12 ct"
+        },
+        "bread": {
+          "name": "L'oven Fresh White Bread",
+          "price": 1.55,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_963f05e3-9eac-4d87-b2bd-05127163b7f0.jpg",
+          "unit": "20 oz"
+        },
+        "butter": {
+          "name": "Countryside Creamery Salted Butter Quarters",
+          "price": 3.65,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3d4ff341-9fff-4831-884b-e5e9e73acece.jpg",
+          "unit": "16 oz"
+        },
+        "rice": {
+          "name": "Wegmans Long Grain White Rice",
+          "price": 1.19,
+          "store": "Wegmans",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_1cc22c65-2240-467e-9768-cabe78f57e8a.jpeg",
+          "unit": "16 oz"
+        }
+      },
+      "basketTotal": 10.17
+    },
+    "13205": {
+      "neighborhood": "Syracuse (South Side)",
+      "lat": 42.6301,
+      "lng": -76.1474,
+      "store": "ALDI",
+      "items": {
+        "milk": {
+          "name": "Friendly Farms Whole Milk",
+          "price": 1.55,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3e06b4ed-686e-4cd2-a478-3245ce04647d.jpg",
+          "unit": "0.5 gal"
+        },
+        "eggs": {
+          "name": "Goldhen Grade A Large Eggs",
+          "price": 2.19,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_af44d7d5-3404-42cf-a574-c1d221815260.jpg",
+          "unit": "12 ct"
+        },
+        "bread": {
+          "name": "L'oven Fresh White Bread",
+          "price": 1.55,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_963f05e3-9eac-4d87-b2bd-05127163b7f0.jpg",
+          "unit": "20 oz"
+        },
+        "butter": {
+          "name": "Countryside Creamery Salted Butter Quarters",
+          "price": 3.65,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3d4ff341-9fff-4831-884b-e5e9e73acece.jpg",
+          "unit": "16 oz"
+        },
+        "rice": {
+          "name": "Mahatma Yellow Rice, Seasoned Rice, Gluten Free Rice, Spanish Style Rice, Uncooked Rice",
+          "price": 1.19,
+          "store": "Local Store",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_d081810c-0b09-422c-af86-6c3239ab73eb.jpg",
+          "unit": "5 oz"
+        }
+      },
+      "basketTotal": 10.13
+    },
+    "14830": {
+      "neighborhood": "Corning",
+      "lat": 42.1428,
+      "lng": -77.0547,
+      "store": "ALDI",
+      "items": {
+        "milk": {
+          "name": "Friendly Farms Whole Milk",
+          "price": 1.85,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3e06b4ed-686e-4cd2-a478-3245ce04647d.jpg",
+          "unit": "0.5 gal"
+        },
+        "eggs": {
+          "name": "Goldhen Grade A Large Eggs",
+          "price": 2.19,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_af44d7d5-3404-42cf-a574-c1d221815260.jpg",
+          "unit": "12 ct"
+        },
+        "bread": {
+          "name": "L'oven Fresh White Bread",
+          "price": 1.55,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_963f05e3-9eac-4d87-b2bd-05127163b7f0.jpg",
+          "unit": "20 oz"
+        },
+        "butter": {
+          "name": "Countryside Creamery Salted Butter Quarters",
+          "price": 3.65,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3d4ff341-9fff-4831-884b-e5e9e73acece.jpg",
+          "unit": "16 oz"
+        },
+        "rice": {
+          "name": "Wegmans Steamables Jasmine Rice",
+          "price": 2.29,
+          "store": "Wegmans",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_4a3a543a-639d-4b07-9765-cf969df66cd4.jpeg",
+          "unit": "8.8 oz"
+        }
+      },
+      "basketTotal": 11.53
+    },
+    "14850": {
+      "neighborhood": "Ithaca (Downtown)",
+      "lat": 42.444,
+      "lng": -76.5019,
+      "store": "ALDI",
+      "items": {
+        "milk": {
+          "name": "Friendly Farms 2% Milk",
+          "price": 1.85,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_6b0869e5-bd09-436f-84d5-6fb8ccea4c41.jpg",
+          "unit": "0.5 gal"
+        },
+        "eggs": {
+          "name": "TOPS Eggs, Large, Grade A",
+          "price": 1.99,
+          "store": "Tops",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_e9c0fb66-9160-4b6e-bf96-682a6ed27c2d.jpg",
+          "unit": "12 ct"
+        },
+        "bread": {
+          "name": "L'oven Fresh White Bread",
+          "price": 1.55,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_963f05e3-9eac-4d87-b2bd-05127163b7f0.jpg",
+          "unit": "20 oz"
+        },
+        "butter": {
+          "name": "Countryside Creamery Salted Butter Quarters",
+          "price": 3.65,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3d4ff341-9fff-4831-884b-e5e9e73acece.jpg",
+          "unit": "16 oz"
+        },
+        "rice": {
+          "name": "Mahatma Yellow Rice, Seasoned Rice, Gluten Free Rice, Spanish Style Rice, Uncooked Rice",
+          "price": 1.19,
+          "store": "Local Store",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_d081810c-0b09-422c-af86-6c3239ab73eb.jpg",
+          "unit": "5 oz"
+        }
+      },
+      "basketTotal": 10.23
+    },
+    "14901": {
+      "neighborhood": "Elmira",
+      "lat": 42.0898,
+      "lng": -76.8077,
+      "store": "ALDI",
+      "items": {
+        "milk": {
+          "name": "Friendly Farms Whole Milk",
+          "price": 1.85,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3e06b4ed-686e-4cd2-a478-3245ce04647d.jpg",
+          "unit": "0.5 gal"
+        },
+        "eggs": {
+          "name": "Goldhen Grade A Large Eggs",
+          "price": 2.19,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_af44d7d5-3404-42cf-a574-c1d221815260.jpg",
+          "unit": "12 ct"
+        },
+        "bread": {
+          "name": "L'oven Fresh White Bread",
+          "price": 1.55,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_963f05e3-9eac-4d87-b2bd-05127163b7f0.jpg",
+          "unit": "20 oz"
+        },
+        "butter": {
+          "name": "Countryside Creamery Salted Butter Quarters",
+          "price": 3.65,
+          "store": "ALDI",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_3d4ff341-9fff-4831-884b-e5e9e73acece.jpg",
+          "unit": "16 oz"
+        },
+        "rice": {
+          "name": "Wegmans Long Grain White Rice",
+          "price": 1.19,
+          "store": "Wegmans",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_1cc22c65-2240-467e-9768-cabe78f57e8a.jpeg",
+          "unit": "16 oz"
+        }
+      },
+      "basketTotal": 10.43
+    }
+  }
+}

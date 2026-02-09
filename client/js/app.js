@@ -1,93 +1,223 @@
 /**
- * app.js — Main orchestrator
- * Agent/backend owns this file.
+ * app.js — Main orchestrator for pre-scraped price data
  *
- * Wires together: basket → API → map → savings
+ * Auto-loads data from /api/prices on page load.
+ * No basket building needed — items are pre-defined.
  *
  * Shared contract:
- *   window.Arbicart.basket  — { getItems() → [{name, qty}] }
  *   window.Arbicart.map     — { plotPrices(pricesByZip), centerOn(lat, lng) }
  *   window.Arbicart.savings — { showSavings(homeZip, pricesByZip) }
  */
 
 window.Arbicart = window.Arbicart || {};
 
-document.addEventListener('DOMContentLoaded', () => {
-    const compareBtn = document.querySelector('#compare-btn');
-    const zipInput = document.querySelector('#zip-input');
+document.addEventListener('DOMContentLoaded', async () => {
+    const zipSelect = document.getElementById('zip-input');
+    const compareBtn = document.getElementById('compare-btn');
 
-    if (!compareBtn) {
-        console.log('[app.js] #compare-btn not found yet — UI agent may not have built it');
+    // ── Load price data — try API first (local dev), fall back to static JSON (GitHub Pages)
+    let priceData = null;
+
+    try {
+        const res = await fetch('/api/prices?items=milk,eggs,bread,butter,rice&zip=14850');
+        if (!res.ok) throw new Error(`API error ${res.status}`);
+        priceData = await res.json();
+    } catch (_apiErr) {
+        // No API available (static hosting) — load baked JSON
+        try {
+            const res = await fetch('data/prices.json');
+            if (!res.ok) throw new Error(`Static file error ${res.status}`);
+            priceData = await res.json();
+        } catch (err) {
+            console.error('Failed to load price data:', err);
+            showToast('❌ Could not load price data');
+            return;
+        }
+    }
+
+    if (!priceData?.pricesByZip || Object.keys(priceData.pricesByZip).length === 0) {
+        showToast('📭 No price data available. Run: node scripts/scrape.js');
         return;
     }
 
-    compareBtn.addEventListener('click', async () => {
-        // ── Gather basket items ───────────────────────────────────
-        const items = window.Arbicart.basket?.getItems?.() || [];
-        const zip = zipInput?.value?.trim() || '14850';
+    // ── Populate ZIP dropdown ──────────────────────────────────
+    const sortedZips = Object.entries(priceData.pricesByZip)
+        .sort((a, b) => a[1].basketTotal - b[1].basketTotal);
 
-        if (items.length === 0) {
-            showToast('🛒 Add some items to your basket first!');
-            return;
-        }
+    zipSelect.innerHTML = sortedZips
+        .map(([zip, data]) => {
+            const label = `${data.neighborhood} — $${data.basketTotal.toFixed(2)} (${data.store})`;
+            return `<option value="${zip}" ${zip === '14850' ? 'selected' : ''}>${label}</option>`;
+        })
+        .join('');
 
-        // ── Loading state ─────────────────────────────────────────
-        const originalText = compareBtn.textContent;
-        compareBtn.textContent = '⏳ Comparing…';
-        compareBtn.disabled = true;
+    // ── Render price table ─────────────────────────────────────
+    renderPriceTable(priceData.pricesByZip, priceData.items);
 
-        try {
-            const itemNames = items.map((i) => i.name || i).join(',');
-            const url = `/api/prices?items=${encodeURIComponent(itemNames)}&zip=${encodeURIComponent(zip)}`;
-            const res = await fetch(url);
+    // ── Render receipt for initial ZIP ──────────────────────────
+    const initialZip = priceData.homeZip || '14850';
+    renderReceipt(initialZip, priceData.pricesByZip, priceData.items);
 
-            if (!res.ok) {
-                const errBody = await res.json().catch(() => ({}));
-                throw new Error(errBody.error || `Server error ${res.status}`);
-            }
+    // ── Auto-show map + savings on load ─────────────────────────
+    showResults(initialZip, priceData.pricesByZip);
 
-            const data = await res.json();
-
-            // ── Pass data to map module ─────────────────────────────
-            if (window.Arbicart.map) {
-                window.Arbicart.map.plotPrices(data.pricesByZip);
-                const homeData = data.pricesByZip[data.homeZip];
-                if (homeData) {
-                    window.Arbicart.map.centerOn(homeData.lat, homeData.lng);
-                }
-            }
-
-            // ── Pass data to savings module ─────────────────────────
-            if (window.Arbicart.savings) {
-                window.Arbicart.savings.showSavings(data.homeZip, data.pricesByZip);
-            }
-
-            // Scroll to map if it exists
-            const mapSection = document.querySelector('#map-section');
+    // ── Compare button — re-center on selected ZIP ─────────────
+    if (compareBtn) {
+        compareBtn.addEventListener('click', () => {
+            const selectedZip = zipSelect.value;
+            renderReceipt(selectedZip, priceData.pricesByZip, priceData.items);
+            showResults(selectedZip, priceData.pricesByZip);
+            const mapSection = document.getElementById('map-section');
             if (mapSection) {
                 mapSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-        } catch (err) {
-            console.error('Price fetch failed:', err);
-            showToast(`❌ ${err.message || 'Something went wrong'}`);
-        } finally {
-            compareBtn.textContent = originalText || '🔍 Compare Prices';
-            compareBtn.disabled = false;
-        }
-    });
+        });
+    }
+
+    // Also update receipt when dropdown changes
+    if (zipSelect) {
+        zipSelect.addEventListener('change', () => {
+            const selectedZip = zipSelect.value;
+            renderReceipt(selectedZip, priceData.pricesByZip, priceData.items);
+        });
+    }
 });
 
 /**
- * Simple toast notification (works even if UI agent hasn't built one).
+ * Render receipt-style item list in overview card.
+ */
+function renderReceipt(zip, pricesByZip, items) {
+    const container = document.getElementById('receipt-container');
+    if (!container) return;
+
+    const data = pricesByZip[zip];
+    if (!data || !data.items) {
+        container.innerHTML = '';
+        return;
+    }
+
+    const itemList = items || ['milk', 'eggs', 'bread', 'butter', 'rice'];
+
+    const lines = itemList.map(item => {
+        const d = data.items[item];
+        if (!d) return `<div class="receipt-line"><span class="receipt-item">—</span><span class="receipt-dots"></span><span class="receipt-price">—</span></div>`;
+        const name = d.name || item;
+        return `<div class="receipt-line"><span class="receipt-item">${name.toUpperCase()}</span><span class="receipt-dots"></span><span class="receipt-price">$${d.price.toFixed(2)}</span></div>`;
+    }).join('');
+
+    container.innerHTML = `
+        <div class="receipt">
+            <div class="receipt-store">${data.store} · ${data.neighborhood}</div>
+            <div class="receipt-divider"></div>
+            ${lines}
+            <div class="receipt-divider"></div>
+            <div class="receipt-total-line">
+                <span class="receipt-total-label">BASKET TOTAL</span>
+                <span class="receipt-dots"></span>
+                <span class="receipt-total-price">$${data.basketTotal.toFixed(2)}</span>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Show map pins and savings card for a given home ZIP.
+ */
+function showResults(homeZip, pricesByZip) {
+    if (window.Arbicart.map) {
+        window.Arbicart.map.plotPrices(pricesByZip);
+        const homeData = pricesByZip[homeZip];
+        if (homeData) {
+            window.Arbicart.map.centerOn(homeData.lat, homeData.lng);
+        }
+    }
+
+    if (window.Arbicart.savings) {
+        window.Arbicart.savings.showSavings(homeZip, pricesByZip);
+    }
+}
+
+/**
+ * Render a clean price comparison table.
+ */
+function renderPriceTable(pricesByZip, items) {
+    const container = document.getElementById('price-table-container');
+    if (!container) return;
+
+    const zips = Object.entries(pricesByZip)
+        .filter(([, d]) => d.items && Object.keys(d.items).length > 0)
+        .sort((a, b) => a[1].basketTotal - b[1].basketTotal);
+
+    if (zips.length === 0) return;
+
+    // Find cheapest price per item across all ZIPs
+    const cheapestByItem = {};
+    (items || ['milk', 'eggs', 'bread', 'butter', 'rice']).forEach(item => {
+        let min = Infinity;
+        zips.forEach(([, data]) => {
+            if (data.items[item]?.price < min) min = data.items[item].price;
+        });
+        cheapestByItem[item] = min;
+    });
+
+    const cheapestBasket = zips[0][1].basketTotal;
+    const expensiveBasket = zips[zips.length - 1][1].basketTotal;
+
+    container.innerHTML = `
+    <div class="price-table-card">
+      <div class="price-table-header">
+        <span>🏪 Price comparison by neighborhood</span>
+        <span class="price-table-spread">Spread: $${(expensiveBasket - cheapestBasket).toFixed(2)}</span>
+      </div>
+      <div class="price-table-scroll">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th class="pt-cell pt-head-zip">Neighborhood</th>
+            ${(items || ['milk', 'eggs', 'bread', 'butter', 'rice']).map(i =>
+        `<th class="pt-cell pt-head-item">${i}</th>`
+    ).join('')}
+            <th class="pt-cell pt-head-total">Basket</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${zips.map(([zip, data], idx) => {
+        const isCheapest = idx === 0;
+        const rowClass = isCheapest ? 'pt-row-cheapest' : '';
+        return `
+              <tr class="pt-row ${rowClass}">
+                <td class="pt-cell pt-cell-zip">
+                  <div class="pt-neighborhood">${data.neighborhood}</div>
+                  <div class="pt-store">${data.store} · ${zip}</div>
+                </td>
+                ${(items || ['milk', 'eggs', 'bread', 'butter', 'rice']).map(item => {
+            const itemData = data.items[item];
+            if (!itemData) return '<td class="pt-cell pt-cell-price pt-na">—</td>';
+            const isBest = itemData.price <= cheapestByItem[item];
+            return `<td class="pt-cell pt-cell-price ${isBest ? 'pt-best' : ''}" title="${itemData.name}">$${itemData.price.toFixed(2)}</td>`;
+        }).join('')}
+                <td class="pt-cell pt-cell-total ${isCheapest ? 'pt-total-best' : ''}">$${data.basketTotal.toFixed(2)}</td>
+              </tr>`;
+    }).join('')}
+        </tbody>
+      </table>
+      </div>
+      <div class="price-table-footer">
+        Prices from Instacart · Last updated: ${new Date().toLocaleDateString()}
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Simple toast notification.
  */
 function showToast(message) {
-    // Check if UI agent provides a toast
     if (window.Arbicart.toast) {
         window.Arbicart.toast(message);
         return;
     }
 
-    // Minimal built-in fallback
     let toast = document.getElementById('arbicart-toast');
     if (!toast) {
         toast = document.createElement('div');
@@ -97,16 +227,19 @@ function showToast(message) {
             bottom: '2rem',
             left: '50%',
             transform: 'translateX(-50%)',
-            padding: '0.75rem 1.5rem',
-            borderRadius: '12px',
+            padding: '0.85rem 1.75rem',
+            borderRadius: '0',
             background: '#003D29',
             color: '#fff',
             fontSize: '0.85rem',
-            fontFamily: "'Inter', -apple-system, sans-serif",
-            fontWeight: '600',
+            fontFamily: "'Space Grotesk', -apple-system, sans-serif",
+            fontWeight: '700',
+            textTransform: 'uppercase',
+            letterSpacing: '0.06em',
             zIndex: '9999',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
-            transition: 'opacity 0.2s ease',
+            border: '4px solid #000',
+            boxShadow: '6px 6px 0px 0px #000',
+            transition: 'opacity 0.15s ease-linear',
             pointerEvents: 'none',
         });
         document.body.appendChild(toast);
