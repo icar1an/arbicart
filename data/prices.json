@@ -1,0 +1,172 @@
+{
+  "scrapedAt": "2026-02-09T14:00:44.058Z",
+  "itemsSearched": [
+    "milk",
+    "eggs",
+    "bread",
+    "butter",
+    "rice",
+    "chicken breast",
+    "bananas",
+    "pasta",
+    "cheese",
+    "cereal",
+    "coffee",
+    "yogurt",
+    "avocado",
+    "spinach",
+    "ramen",
+    "frozen pizza",
+    "orange juice",
+    "potatoes",
+    "onions",
+    "salmon"
+  ],
+  "zipCount": 8,
+  "pricesByZip": {
+    "13045": {
+      "neighborhood": "Cortland",
+      "lat": 42.6012,
+      "lng": -76.1805,
+      "store": "Instacart",
+      "items": {
+        "milk": {
+          "name": "Friendly Farms 2% Milk",
+          "price": 2.05,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_6b0869e5-bd09-436f-84d5-6fb8ccea4c41.jpg",
+          "unit": "0.5 gal"
+        },
+        "cheese": {
+          "name": "Happy Farms New York Sharp Cheddar Cheese Block",
+          "price": 1.89,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_9fa324f4-d715-41c2-a5eb-7a428ffc1271.jpg",
+          "unit": "8 oz"
+        },
+        "cereal": {
+          "name": "Millville Fruit Rounds",
+          "price": 2.05,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_794cdeb7-7bc1-43c7-903e-485d3f864156.jpg",
+          "unit": "12.2 oz"
+        },
+        "yogurt": {
+          "name": "Friendly Farms Lowfat Strawberry Banana Yogurt",
+          "price": 0.59,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_ccbac71c-0d01-4fe1-b827-8fabeb80b08f.jpg",
+          "unit": "6 oz"
+        },
+        "avocado": {
+          "name": "Medium Avocado",
+          "price": 0.45,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_5af0083c-0f0d-4b88-95f9-0a2d3430663b.jpg",
+          "unit": "1 each"
+        },
+        "orange juice": {
+          "name": "PICS Juice, Orange, Some Pulp, Homestyle",
+          "price": 4.69,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_820f2c27-7989-41d7-a6f4-288f1e7eaa80.png",
+          "unit": "52 fl oz"
+        },
+        "onions": {
+          "name": "Green Onions, Bag",
+          "price": 1.05,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_4e369aef-6745-4912-ba4e-1b06c5f2f3b4.jpg",
+          "unit": "5.5 oz"
+        },
+        "salmon": {
+          "name": "Fremont Fish Market Wild Caught Salmon",
+          "price": 8.45,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_299568f3-5dba-4691-9cb8-7d674e7e8548.jpg",
+          "unit": "16 oz"
+        }
+      },
+      "basketTotal": 21.22,
+      "itemCount": 8
+    },
+    "14830": {
+      "neighborhood": "Corning",
+      "lat": 42.1428,
+      "lng": -77.0547,
+      "store": "Instacart",
+      "items": {
+        "milk": {
+          "name": "Wegmans 2% Reduced Fat Milk",
+          "price": 2.79,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_5fb5751e-c967-43b1-963a-439b8ad94be3.jpeg",
+          "unit": "0.5 gal"
+        },
+        "bread": {
+          "name": "Wegmans Giant White Bread",
+          "price": 1.59,
+          "store": "Instacart",
+          "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20324e05-f4d1-462e-8ca0-2391454eec1b.jpeg",
+          "unit": "22 oz"
+        }
+      },
+      "basketTotal": 4.38,
+      "itemCount": 2
+    },
+    "14845": {
+      "neighborhood": "Horseheads",
+      "lat": 42.167,
+      "lng": -76.8205,
+      "store": "Instacart",
+      "items": {},
+      "basketTotal": 0,
+      "itemCount": 0
+    },
+    "14850": {
+      "neighborhood": "Ithaca (Downtown)",
+      "lat": 42.444,
+      "lng": -76.5019,
+      "store": "Instacart",
+      "items": {},
+      "basketTotal": 0,
+      "itemCount": 0
+    },
+    "14853": {
+      "neighborhood": "Collegetown",
+      "lat": 42.443,
+      "lng": -76.4856,
+      "store": "Instacart",
+      "items": {},
+      "basketTotal": 0,
+      "itemCount": 0
+    },
+    "14882": {
+      "neighborhood": "Lansing",
+      "lat": 42.5722,
+      "lng": -76.529,
+      "store": "Instacart",
+      "items": {},
+      "basketTotal": 0,
+      "itemCount": 0
+    },
+    "14886": {
+      "neighborhood": "Trumansburg",
+      "lat": 42.5429,
+      "lng": -76.6608,
+      "store": "Instacart",
+      "items": {},
+      "basketTotal": 0,
+      "itemCount": 0
+    },
+    "14901": {
+      "neighborhood": "Elmira",
+      "lat": 42.0898,
+      "lng": -76.8077,
+      "store": "Instacart",
+      "items": {},
+      "basketTotal": 0,
+      "itemCount": 0
+    }
+  }
+}

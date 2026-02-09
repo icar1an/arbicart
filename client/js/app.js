@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // ── Loading state ─────────────────────────────────────────
         const originalText = compareBtn.textContent;
-        compareBtn.textContent = '⏳ Fetching real prices… (1-2 min)';
+        compareBtn.textContent = '⏳ Comparing…';
         compareBtn.disabled = true;
 
         try {
